@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-if [ "`echo -n I | od -to2 | head -n1 | cut -f2 -d' ' | cut -c6`" -eq 1 ]; then
+if [ "`echo -n I | hexdump -o | awk '{ print substr($2,6,1); exit}'`" -eq 1 ]; then
 	echo "little"
 else
 	echo "big"
